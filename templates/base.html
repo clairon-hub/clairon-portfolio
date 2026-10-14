@@ -1,0 +1,606 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Portfolio{% endblock %}</title>
+
+    <style>
+        /* GENERAL STYLING */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #090b14;
+            color: #f5f5ff;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1120px;
+            margin: auto;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #c4b5fd, #a78bfa, #e879f9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .eyebrow {
+            color: #a78bfa;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        /* NAVIGATION */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(9, 11, 20, 0.95);
+            border-bottom: 1px solid #25283a;
+        }
+
+        .navbar {
+            min-height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+           .logo {
+        width: 68px;
+        height: 68px;
+        object-fit: contain;
+        display: block;
+    }
+
+        .logo span {
+            color: #a78bfa;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 23px;
+         }
+
+        .nav-links a {
+            color: #b1b5c8;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #c4b5fd;
+        }
+
+        .nav-links .nav-contact {
+            color: white;
+            border: 1px solid #7c3aed;
+            padding: 8px 13px;
+            border-radius: 8px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 620px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 50px;
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 66px);
+            line-height: 1.15;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+        }
+
+        .hero-description {
+            color: #a1a8bb;
+            max-width: 570px;
+            line-height: 1.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 19px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-primary {
+            color: white;
+            background: linear-gradient(120deg, #7c3aed, #9333ea);
+        }
+
+        .btn-outline {
+            border: 1px solid #38344d;
+            color: white;
+        }
+
+        .hero-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 28px;
+        }
+
+        .hero-interests span,
+        .project-tags span {
+            color: #c4b5fd;
+            background: #171327;
+            border: 1px solid #35264e;
+            border-radius: 30px;
+            padding: 5px 12px;
+            font-size: 12px;
+        }
+
+        /* PROFILE PHOTO */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 420px;
+        }
+
+        .portrait-frame {
+            width: min(100%, 320px);
+            aspect-ratio: 4 / 5;
+            padding: 7px;
+            border: 1px solid #8b5cf6;
+            border-radius: 160px 160px 25px 25px;
+            background: linear-gradient(145deg, #292044, #111522);
+            box-shadow: 0 20px 70px rgba(124, 58, 237, 0.2);
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 155px 155px 19px 19px;
+            background: #171c2c;
+        }
+
+        .floating-card {
+            position: absolute;
+            left: -10px;
+            bottom: 65px;
+            background: #171c2c;
+            border: 1px solid #343047;
+            border-radius: 12px;
+            padding: 13px 17px;
+        }
+
+        .floating-card strong {
+            font-size: 14px;
+        }
+
+        .floating-card p {
+            color: #a1a8bb;
+            font-size: 12px;
+        }
+
+        /* SECTIONS */
+        .section {
+            padding-top: 90px;
+            padding-bottom: 90px;
+        }
+
+        .section-alt {
+            padding-top: 90px;
+            padding-bottom: 90px;
+            background: #0d101b;
+            border-top: 1px solid #171a29;
+            border-bottom: 1px solid #171a29;
+        }
+
+        .section-heading {
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2,
+        .goals-card h2,
+        .contact-card h2 {
+            font-size: clamp(30px, 4vw, 45px);
+            line-height: 1.25;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            color: #a1a8bb;
+            max-width: 600px;
+        }
+
+        /* CARDS */
+        .glass-card {
+            background: linear-gradient(145deg, #151928, #10131f);
+            border: 1px solid #282b3b;
+            border-radius: 16px;
+            transition: 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: #7654bb;
+        }
+
+        .card-icon {
+            display: inline-block;
+            color: #c4b5fd;
+            background: #241b3a;
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-size: 23px;
+            margin-bottom: 15px;
+        }
+
+        .card-label {
+            color: #a78bfa;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .glass-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .glass-card p {
+            color: #a1a8bb;
+            font-size: 14px;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 22px;
+        }
+
+        .about-main {
+            padding: 30px;
+        }
+
+        .about-main p + p {
+            margin-top: 15px;
+        }
+
+        .about-side {
+            display: grid;
+            gap: 20px;
+        }
+
+        .info-card {
+            padding: 24px;
+        }
+
+        /* EDUCATION */
+        .education-card {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            padding: 28px;
+        }
+
+        .education-icon {
+            color: #c4b5fd;
+            background: #241b3a;
+            border-radius: 12px;
+            padding: 15px;
+            font-size: 25px;
+        }
+
+        .education-badge {
+            margin-left: auto;
+            color: #c4b5fd;
+            background: #241b3a;
+            border-radius: 30px;
+            padding: 6px 12px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .skill-card {
+            padding: 23px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            color: #a78bfa;
+            font-size: 12px;
+            margin-top: 15px;
+        }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .project-card {
+            overflow: hidden;
+        }
+
+        .project-number {
+            padding: 18px 23px 0;
+            color: #a1a8bb;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        .project-art {
+            display: grid;
+            place-items: center;
+            min-height: 160px;
+            margin-top: 15px;
+            font-size: 60px;
+            font-weight: bold;
+            color: #c4b5fd;
+            background: radial-gradient(circle, #30204c, #151326);
+        }
+
+        .project-body {
+            padding: 24px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 17px;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: #a78bfa;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+
+        /* INTERESTS */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .interest-card {
+            padding: 28px;
+        }
+
+        .interest-emoji {
+            display: block;
+            font-size: 32px;
+            margin-bottom: 17px;
+        }
+
+        /* GOALS */
+        .goals-card {
+            max-width: 750px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .goals-card p:not(.eyebrow) {
+            max-width: 650px;
+            margin: 20px auto;
+            color: #a1a8bb;
+        }
+
+        /* CONTACT */
+        .contact-card {
+            text-align: center;
+            padding: 60px 25px;
+            border: 1px solid #35264e;
+            border-radius: 22px;
+            background: radial-gradient(ellipse at top, #211737, #111522 70%);
+        }
+
+        .contact-card p:not(.eyebrow) {
+            max-width: 550px;
+            margin: 20px auto;
+            color: #a1a8bb;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 30px 0 20px;
+            border-top: 1px solid #25283a;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer p,
+        .footer a {
+            color: #a1a8bb;
+            font-size: 13px;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 22px;
+        }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 900px) {
+            .hero {
+                gap: 25px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-top: 14px;
+                padding-bottom: 14px;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 16px;
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+
+            .nav-links a {
+                white-space: nowrap;
+                font-size: 12px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 55px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero-visual {
+                min-height: 390px;
+            }
+
+            .portrait-frame {
+                width: min(78%, 300px);
+            }
+
+            .floating-card {
+                left: 0;
+                bottom: 50px;
+            }
+
+            .section,
+            .section-alt {
+                padding-top: 65px;
+                padding-bottom: 65px;
+            }
+
+            .skills-grid,
+            .projects-grid,
+            .interests-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-card {
+                align-items: flex-start;
+                flex-wrap: wrap;
+            }
+
+            .education-badge {
+                margin-left: 0;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="navbar container">
+            <img src="{% static 'core/images/Glossy ICC Monogram with Crown.png' %}"
+                 alt="My logo">
+
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact" class="nav-contact">Contact me ↗</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>Designed and built by Ishami Cyusa Clairon.</p>
+            <a href="#home">Back to top ↑</a>
+        </div>
+        <p class="copyright">
+            © 2026 Ishami Cyusa Clairon. All rights reserved.
+        </p>
+    </footer>
+</body>
+</html>
+

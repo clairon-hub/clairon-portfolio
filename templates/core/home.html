@@ -1,0 +1,288 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Ishami Cyusa Clairon | Portfolio{% endblock %}
+
+{% block content %}
+
+<section class="hero container" id="home">
+    <div class="hero-text">
+        <p class="eyebrow">STUDENT · CREATIVE THINKER · FUTURE PROFESSIONAL</p>
+
+        <h1>
+            Hi, I'm
+            <span class="gradient-text"> Clairon.</span>
+        </h1>
+
+        <p class="hero-description">
+            I am a Grade 12 Arts and Business student passionate about
+            Mathematics, Business and Computer Science. Outside the
+            classroom, I enjoy debating, dancing and singing.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">Explore My Work </a>
+            <a href="#about" class="btn btn-outline">About Me</a>
+        </div>
+
+        <div class="hero-interests">
+            <span>Mathematics</span>
+            <span>Business</span>
+            <span>Computer Science</span>
+        </div>
+    </div>
+
+    <div class="hero-visual">
+        <div class="portrait-frame">
+            <img
+                src="{% static 'core/images/761124238_2077707879787756_1247269665308751895_n.jpg' %}"
+                alt="Me"
+                class="profile-photo"
+            >
+        </div>
+
+        <div class="floating-card">
+            <strong>Curious mind ✦</strong>
+            <p>Creative spirit.</p>
+        </div>
+    </div>
+</section>
+
+
+<section class="section container" id="about">
+    <div class="section-heading">
+        <p class="eyebrow">01 / ABOUT ME</p>
+        <h2>Get to know <span class="gradient-text">me.</span></h2>
+    </div>
+
+    <div class="about-grid">
+        <div class="about-main glass-card">
+            <span class="card-icon">✳</span>
+            <h3>More than a student</h3>
+
+            <p>
+                I enjoy other things out of class,like dancing,singing and debating
+            </p>
+
+            <p>
+                My academic interests include Mathematics, Business
+                and Computer Science. I also enjoy debating because
+                it encourages critical thinking and communication.
+                Dancing and singing allow me to express my creativity.
+            </p>
+        </div>
+
+        <div class="about-side">
+            <div class="info-card glass-card">
+                <p class="card-label">EDUCATION</p>
+                <h3>Grade 12</h3>
+                <p>Arts and Business</p>
+            </div>
+
+            <div class="info-card glass-card">
+                <p class="card-label">MY INTERESTS</p>
+                <h3>Ideas & Creativity</h3>
+                <p>Learning, technology and the arts.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section-alt" id="education">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">02 / EDUCATION</p>
+            <h2>My learning <span class="gradient-text">journey.</span></h2>
+        </div>
+
+        <div class="education-card glass-card">
+            <div class="education-icon">✧</div>
+
+            <div>
+                <p class="card-label">CURRENT STUDIES</p>
+                <h3>Grade 12 — Arts and Business</h3>
+                <p>
+                    Studying Mathematics, Business and Computer Science
+                    while developing my academic and technical knowledge.
+                </p>
+            </div>
+
+            <span class="education-badge">In progress</span>
+        </div>
+    </div>
+</section>
+
+
+<section class="section container" id="skills">
+    <div class="section-heading">
+        <p class="eyebrow">03 / MY SKILLS</p>
+        <h2>What I am <span class="gradient-text">developing.</span></h2>
+        <p class="section-description">
+            Academic interests and personal strengths that form part
+            of my learning journey.
+        </p>
+    </div>
+
+    <div class="skills-grid">
+        <article class="skill-card glass-card">
+            <span class="card-icon">∑</span>
+            <h3>Mathematics</h3>
+            <p>Logical thinking, numerical reasoning and problem-solving.</p>
+            <span class="skill-tag">Academic subject</span>
+        </article>
+
+        <article class="skill-card glass-card">
+            <span class="card-icon">↗</span>
+            <h3>Business</h3>
+            <p>Exploring business concepts and commercial decision-making.</p>
+            <span class="skill-tag">Academic subject</span>
+        </article>
+
+        <article class="skill-card glass-card">
+            <span class="card-icon">&lt;/&gt;</span>
+            <h3>Computer Science</h3>
+            <p>Learning about programming and computational thinking.</p>
+            <span class="skill-tag">Technical learning</span>
+        </article>
+
+        <article class="skill-card glass-card">
+            <span class="card-icon">☷</span>
+            <h3>Communication</h3>
+            <p>Developing expression, reasoning and confidence through debating.</p>
+            <span class="skill-tag">Personal development</span>
+        </article>
+    </div>
+</section>
+
+
+<section class="section-alt" id="projects">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">04 / MY WORK</p>
+            <h2>Projects & <span class="gradient-text">ideas.</span></h2>
+            <p class="section-description">
+                A growing collection of projects and things I learn to build.
+            </p>
+        </div>
+
+        <div class="projects-grid">
+            <article class="project-card glass-card">
+                <div class="project-number">PROJECT 01</div>
+                <div class="project-art">&lt;/&gt;</div>
+
+                <div class="project-body">
+                    <p class="card-label">WEB DEVELOPMENT</p>
+                    <h3>My Personal Portfolio</h3>
+                    <p>
+                        A Django website introducing me, my education,
+                        my interests and my projects.
+                    </p>
+
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>Django</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                    </div>
+
+                    <span class="project-link">Currently developing ↗</span>
+                </div>
+            </article>
+
+            <article class="project-card glass-card">
+                <div class="project-number">PROJECT 02</div>
+                <div class="project-art">∑</div>
+
+                <div class="project-body">
+                    <p class="card-label">FUTURE PROJECT</p>
+                    <h3>My Next Idea</h3>
+                    <p>
+                        A space for a future Computer Science, Mathematics
+                        or Business project.
+                    </p>
+
+                    <div class="project-tags">
+                        <span>Problem-solving</span>
+                        <span>Research</span>
+                    </div>
+
+                    <span class="project-link">Coming soon ↗</span>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+
+<section class="section container" id="interests">
+    <div class="section-heading">
+        <p class="eyebrow">05 / BEYOND THE CLASSROOM</p>
+        <h2>My creative <span class="gradient-text">side.</span></h2>
+    </div>
+
+    <div class="interests-grid">
+        <article class="interest-card glass-card">
+            <span class="interest-emoji">🎙️</span>
+            <h3>Debating</h3>
+            <p>Exploring perspectives, discussing ideas and expressing opinions.</p>
+        </article>
+
+        <article class="interest-card glass-card">
+            <span class="interest-emoji">💃</span>
+            <h3>Dancing</h3>
+            <p>Enjoying rhythm, movement and creative expression.</p>
+        </article>
+
+        <article class="interest-card glass-card">
+            <span class="interest-emoji">🎵</span>
+            <h3>Singing</h3>
+            <p>Expressing myself through music and voice.</p>
+        </article>
+    </div>
+</section>
+
+
+<section class="section-alt">
+    <div class="container goals-card">
+        <p class="eyebrow">06 / LOOKING AHEAD</p>
+
+        <h2>Learning today.<br>
+            <span class="gradient-text">Building for tomorrow.</span>
+        </h2>
+
+        <p>
+            My goal is to keep learning, strengthen my skills,
+            explore technology and turn ideas into meaningful projects.
+        </p>
+
+        <a href="#contact" class="btn btn-primary">Let's Connect ↗</a>
+    </div>
+</section>
+
+
+<section class="section container" id="contact">
+    <div class="contact-card">
+        <p class="eyebrow">07 / CONTACT</p>
+
+        <h2>Let's start a <span class="gradient-text">conversation.</span></h2>
+
+        <p>
+            Interested in exchanging ideas, discussing projects or
+            connecting? Feel free to reach out.
+        </p>
+
+        <div class="contact-links">
+            <a href="mailto:your-email@example.com" class="btn btn-primary">
+                Email Me ↗
+            </a>
+
+            <a href="https://github.com/" class="btn btn-outline">
+                GitHub ↗
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
