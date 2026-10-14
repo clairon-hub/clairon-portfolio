@@ -1,60 +1,161 @@
-
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Ishami Cyusa Clairon | Home{% endblock %}
+{% block title %}Home | Ishami Cyusa Clairon{% endblock %}
+
 
 {% block content %}
 
-<section class="hero container" id="home">
-
-    <div class="hero-text">
-        <p class="eyebrow">
-            STUDENT · CREATIVE THINKER · FUTURE PROFESSIONAL
-        </p>
+<section class="home-hero">
+    <div>
+        <span class="eyebrow">WELCOME TO MY PORTFOLIO</span>
 
         <h1>
-            Hi, I'm <span class="gradient-text">Clairon.</span>
+            Hi, I'm <span class="gradient-text"> Clairon.</span>
         </h1>
 
         <p class="hero-description">
-            I am a Grade 12 Arts and Business student passionate about
-            Mathematics, Business and Computer Science. Outside the
-            classroom, I enjoy debating, dancing and singing.
+            A curious learner, aspiring developer, and problem solver
+            passionate about technology, creativity, and building things
+            that make a difference.
         </p>
 
-        <div class="hero-buttons">
+        <div class="button-row">
             <a href="{% url 'core:about' %}" class="btn btn-primary">
-                About Me
+                Discover My Story →
             </a>
 
             <a href="{% url 'core:contact' %}" class="btn btn-outline">
-                Contact Me
+                Let's Connect
             </a>
         </div>
 
-        <div class="hero-interests">
-            <span>Mathematics</span>
-            <span>Business</span>
-            <span>Computer Science</span>
+        <div class="tag-list">
+            <span class="tag">Python</span>
+            <span class="tag">Django</span>
+            <span class="tag">HTML & CSS</span>
+            <span class="tag">Problem Solving</span>
         </div>
     </div>
 
-    <div class="hero-visual">
-        <div class="portrait-frame">
-            <img
-                src="{% static 'core/images/761124238_2077707879787756_1247269665308751895_n.jpg' %}"
-                alt="My profile photo"
-                class="profile-photo"
-            >
-        </div>
+  <div class="hero-image-wrap">
+    <img
+        class="profile-photo"
+        src="{% static 'core/images/761124238_2077707879787756_1247269665308751895_n.jpg' %}"
+        alt="Portrait of me"
+    >
+</div>
+</section>
 
-        <div class="floating-card">
-            <strong>Curious mind ✦</strong>
-            <p>Creative spirit.</p>
-        </div>
+<section class="stats-grid">
+    <div class="stat">
+        <strong class="gradient-text">01</strong>
+        <span>Always Learning</span>
     </div>
 
+    <div class="stat">
+        <strong class="gradient-text">∞</strong>
+        <span>Ideas to Explore</span>
+    </div>
+
+    <div class="stat">
+        <strong class="gradient-text">100%</strong>
+        <span>Focused on Growth</span>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-heading">
+        <span class="eyebrow">WHAT I BRING</span>
+        <h2>Curiosity meets <span class="gradient-text">creativity.</span></h2>
+        <p>
+            I'm building my skills one project, one challenge, and one
+            new idea at a time.
+        </p>
+    </div>
+
+    <div class="card-grid">
+        <article class="card">
+            <div class="card-icon">💻</div>
+            <h3>Web Development</h3>
+            <p>
+                Creating web experiences with Python, Django, HTML,
+                and CSS while learning good development practices.
+            </p>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">🧠</div>
+            <h3>Problem Solving</h3>
+            <p>
+                Breaking challenges into smaller steps and finding
+                thoughtful, practical solutions.
+            </p>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">🤝</div>
+            <h3>Teamwork & Leadership</h3>
+            <p>
+                Learning with others, sharing ideas, and contributing
+                to activities and communities.
+            </p>
+        </article>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-heading">
+        <span class="eyebrow">GET TO KNOW ME</span>
+        <h2>More than just <span class="gradient-text">code.</span></h2>
+        <p>
+            My interests, experiences, and goals are all part of my story.
+        </p>
+    </div>
+
+    <div class="card-grid">
+        <article class="card">
+            <div class="card-icon">🙋</div>
+            <h3>My Story</h3>
+            <p>
+                Discover who I am, what I care about, and where I want
+                to go next.
+            </p>
+            <div class="button-row">
+                <a href="{% url 'core:about' %}" class="btn btn-outline">
+                    About Me →
+                </a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">🌟</div>
+            <h3>My Communities</h3>
+            <p>
+                Explore my clubs, activities, interests, and opportunities
+                to learn with other people.
+            </p>
+            <div class="button-row">
+                <a href="{% url 'core:about' %}#clubs" class="btn btn-outline">
+                    Explore Clubs →
+                </a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">✉️</div>
+            <h3>Let's Talk</h3>
+            <p>
+                Have a question, an idea, or a project in mind?
+                I'd love to hear from you.
+            </p>
+            <div class="button-row">
+                <a href="{% url 'core:contact' %}" class="btn btn-outline">
+                    Contact Me →
+                </a>
+            </div>
+        </article>
+    </div>
 </section>
 
 {% endblock %}

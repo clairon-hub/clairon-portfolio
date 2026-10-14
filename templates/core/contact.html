@@ -2,82 +2,271 @@
 
 {% block title %}Contact Me | Ishami Cyusa Clairon{% endblock %}
 
+{% block page_css %}
+.contact-layout {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.contact-info,
+.contact-form-card {
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(21,31,50,.9), rgba(11,17,29,.95));
+}
+
+.contact-info h2,
+.contact-form-card h2 {
+    margin-bottom: .8rem;
+}
+
+.contact-detail {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.contact-detail:last-child {
+    border-bottom: none;
+}
+
+.contact-detail-icon {
+    font-size: 1.3rem;
+}
+
+.contact-detail strong {
+    display: block;
+}
+
+.contact-form {
+    margin-top: 1.5rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-field {
+    margin-bottom: 1.1rem;
+}
+
+.form-field.full {
+    grid-column: 1 / -1;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: .45rem;
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    padding: .9rem 1rem;
+    color: var(--text);
+    background: #0a1120;
+    border: 1px solid #29364b;
+    border-radius: 10px;
+    font: inherit;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px rgba(139,92,246,.13);
+}
+
+.form-field textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.form-field select option {
+    background: #0a1120;
+}
+
+.form-help {
+    margin-top: .35rem;
+    font-size: .8rem;
+}
+
+.contact-form button {
+    width: 100%;
+}
+
+.privacy-note {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: .82rem;
+}
+
+@media (max-width: 760px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-field.full {
+        grid-column: auto;
+    }
+}
+{% endblock %}
+
 {% block content %}
-<section class="contact-hero-section">
-    <div class="container">
-        <div class="contact-header">
-            <span class="eyebrow">GET IN TOUCH</span>
-            <h1>Let's Build Something <span class="gradient-text">Amazing Together.</span></h1>
-            <p class="section-description" style="margin: 0 auto;">Have a question or want to work together? Send me a message below.</p>
+
+<section>
+    <span class="eyebrow">LET'S CONNECT</span>
+
+    <h1>Have an idea? <span class="gradient-text">Let's talk.</span></h1>
+
+    <p style="max-width: 700px; margin-top: 1rem;">
+        Have a question, an opportunity, or a project in mind?
+        Send me a message using the form below.
+    </p>
+</section>
+
+<section class="section contact-layout">
+
+    <aside class="contact-info">
+        <span class="eyebrow">GET IN TOUCH</span>
+        <h2>I'd love to hear from you.</h2>
+
+        <p>
+            Fill in the form and tell me a little about what you have in mind.
+        </p>
+
+        <div class="contact-detail">
+            <span class="contact-detail-icon">✉️</span>
+            <div>
+                <strong>Email</strong>
+                <p>Replace this with your preferred email address.</p>
+            </div>
         </div>
 
+        <div class="contact-detail">
+            <span class="contact-detail-icon">📍</span>
+            <div>
+                <strong>Location</strong>
+                <p>Rwanda</p>
+            </div>
+        </div>
+
+        <div class="contact-detail">
+            <span class="contact-detail-icon">💬</span>
+            <div>
+                <strong>Open to conversations</strong>
+                <p>Questions, collaborations, learning, and project ideas.</p>
+            </div>
+        </div>
+    </aside>
+
+    <div class="contact-form-card">
+        <h2>Send a message</h2>
+        <p>Fields marked with * are required.</p>
+
         {% if messages %}
-            <div class="messages-container">
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
+            {% for message in messages %}
+                <div class="notice {% if message.tags == 'success' %}success{% elif message.tags == 'error' %}error{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if form_errors %}
+            <div class="notice error">
+                <p>Please correct the following:</p>
+                <ul style="padding-left: 1.2rem;">
+                    {% for error in form_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
             </div>
         {% endif %}
 
-        <div class="contact-grid">
-            <!-- Left Side Info Cards -->
-            <div class="contact-info-cards">
-                <div class="glass-card contact-info-card">
-                    <div class="card-icon">📧</div>
-                    <div>
-                        <h3>Email Me</h3>
-                        <p>ishamiclairon@gmail.com</p>
-                    </div>
+        <form class="contact-form" method="POST" action="{% url 'core:contact' %}">
+            {% csrf_token %}
+
+            <div class="form-grid">
+                <div class="form-field">
+                    <label for="name">Your name *</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        maxlength="100"
+                        value="{{ form_data.name|default:'' }}"
+                        autocomplete="name"
+                        required
+                    >
                 </div>
-                <div class="glass-card contact-info-card">
-                    <div class="card-icon">📍</div>
-                    <div>
-                        <h3>Location</h3>
-                        <p>Grade 12 Arts & Business Student</p>
-                    </div>
+
+                <div class="form-field">
+                    <label for="email">Your email *</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        maxlength="254"
+                        value="{{ form_data.email|default:'' }}"
+                        autocomplete="email"
+                        required
+                    >
                 </div>
-                <div class="glass-card contact-info-card">
-                    <div class="card-icon">💼</div>
-                    <div>
-                        <h3>Focus Areas</h3>
-                        <p>Mathematics, Business & Computer Science</p>
-                    </div>
+
+                <div class="form-field full">
+                    <label for="subject">Subject *</label>
+                    <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        placeholder="What would you like to discuss?"
+                        maxlength="150"
+                        value="{{ form_data.subject|default:'' }}"
+                        required
+                    >
+                </div>
+
+                <div class="form-field full">
+                    <label for="message">Your message *</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Tell me a little about your idea..."
+                        maxlength="5000"
+                        required
+                    >{{ form_data.message|default:'' }}</textarea>
+                    <p class="form-help">Maximum 5,000 characters.</p>
                 </div>
             </div>
 
-            <!-- Right Side Form Wrapper -->
-            <div class="contact-form-wrapper glass-card" style="padding: 35px;">
-                <form method="POST" action="{% url 'core:contact' %}" class="modern-contact-form">
-                    {% csrf_token %}
+            <button type="submit" class="btn btn-primary">
+                Send Message →
+            </button>
 
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Your Email</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" placeholder="What is your message about?" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary submit-btn">
-                        Send Message 🚀
-                    </button>
-                </form>
-            </div>
-        </div>
+            <p class="privacy-note">
+                🔒 Your form is protected by Django CSRF protection.
+            </p>
+        </form>
     </div>
+
 </section>
+
 {% endblock %}
