@@ -1,0 +1,117 @@
+
+{% extends "base.html" %}
+
+{% block title %}About Me | Ishami Cyusa Clairon{% endblock %}
+
+{% block content %}
+
+<section class="section container" id="about">
+    <div class="section-heading">
+        <p class="eyebrow">01 / ABOUT ME</p>
+        <h2>Get to know <span class="gradient-text">me.</span></h2>
+    </div>
+
+    <div class="about-grid">
+        <div class="about-main glass-card">
+            <span class="card-icon">✳</span>
+            <h3>More than a student</h3>
+
+            <p>
+                I enjoy activities outside the classroom, especially
+                dancing, singing and debating.
+            </p>
+
+            <p>
+                My academic interests include Mathematics, Business
+                and Computer Science. I enjoy debating because it
+                encourages critical thinking and communication.
+                Dancing and singing allow me to express my creativity.
+            </p>
+        </div>
+
+        <div class="about-side">
+            <div class="info-card glass-card">
+                <p class="card-label">EDUCATION</p>
+                <h3>Grade 12</h3>
+                <p>Arts and Business</p>
+            </div>
+
+            <div class="info-card glass-card">
+                <p class="card-label">MY INTERESTS</p>
+                <h3>Ideas & Creativity</h3>
+                <p>Learning, technology and the arts.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-alt">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">02 / MY JOURNEY</p>
+            <h2>Always <span class="gradient-text">learning.</span></h2>
+        </div>
+
+        <div class="education-card glass-card">
+            <div class="education-icon">✧</div>
+
+            <div>
+                <p class="card-label">CURRENT STUDIES</p>
+                <h3>Grade 12 — Arts and Business</h3>
+                <p>
+                    I am developing my knowledge in Mathematics,
+                    Business and Computer Science while improving
+                    my academic and technical skills.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section container">
+    <div class="section-heading">
+        <p class="eyebrow">03 / BEYOND THE CLASSROOM</p>
+        <h2>What makes me <span class="gradient-text">me.</span></h2>
+    </div>
+
+    <div class="interests-grid">
+        <article class="interest-card glass-card">
+            <span class="interest-emoji">🎙️</span>
+            <h3>Debating</h3>
+            <p>Sharing ideas, considering different perspectives and building confidence.</p>
+        </article>
+
+        <article class="interest-card glass-card">
+            <span class="interest-emoji">💃</span>
+            <h3>Dancing</h3>
+            <p>Expressing myself through movement, rhythm and creativity.</p>
+        </article>
+
+        <article class="interest-card glass-card">
+            <span class="interest-emoji">🎵</span>
+            <h3>Singing</h3>
+            <p>Enjoying music and expressing myself through my voice.</p>
+        </article>
+    </div>
+</section>
+
+<section class="section-alt">
+    <div class="container goals-card">
+        <p class="eyebrow">04 / MY GOALS</p>
+        <h2>
+            Learning today.<br>
+            <span class="gradient-text">Building for tomorrow.</span>
+        </h2>
+
+        <p>
+            I want to continue learning, explore technology,
+            strengthen my skills and turn my ideas into meaningful projects.
+        </p>
+
+        <a href="{% url 'core:contact' %}" class="btn btn-primary">
+            Contact Me ↗
+        </a>
+    </div>
+</section>
+
+{% endblock %}

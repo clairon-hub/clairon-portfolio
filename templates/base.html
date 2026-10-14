@@ -1,11 +1,9 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>{% block title %}Portfolio{% endblock %}</title>
 
     <style>
@@ -52,6 +50,7 @@
             font-weight: bold;
             letter-spacing: 2px;
             margin-bottom: 18px;
+            display: inline-block;
         }
 
         /* NAVIGATION */
@@ -71,22 +70,18 @@
             gap: 20px;
         }
 
-           .logo {
-        width: 68px;
-        height: 68px;
-        object-fit: contain;
-        display: block;
-    }
-
-        .logo span {
-            color: #a78bfa;
+        .logo {
+            width: 68px;
+            height: 68px;
+            object-fit: contain;
+            display: block;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
             gap: 23px;
-         }
+        }
 
         .nav-links a {
             color: #b1b5c8;
@@ -98,44 +93,7 @@
             color: #c4b5fd;
         }
 
-        .nav-links .nav-contact {
-            color: white;
-            border: 1px solid #7c3aed;
-            padding: 8px 13px;
-            border-radius: 8px;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            min-height: 620px;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            align-items: center;
-            gap: 50px;
-            padding-top: 70px;
-            padding-bottom: 70px;
-        }
-
-        .hero h1 {
-            font-size: clamp(38px, 5vw, 66px);
-            line-height: 1.15;
-            letter-spacing: -2px;
-            margin-bottom: 25px;
-        }
-
-        .hero-description {
-            color: #a1a8bb;
-            max-width: 570px;
-            line-height: 1.9;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-top: 28px;
-        }
-
+        /* BUTTONS */
         .btn {
             display: inline-block;
             padding: 12px 19px;
@@ -143,6 +101,7 @@
             font-weight: bold;
             font-size: 14px;
             transition: 0.3s;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -152,6 +111,7 @@
         .btn-primary {
             color: white;
             background: linear-gradient(120deg, #7c3aed, #9333ea);
+            border: none;
         }
 
         .btn-outline {
@@ -159,311 +119,144 @@
             color: white;
         }
 
-        .hero-interests {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 28px;
-        }
-
-        .hero-interests span,
-        .project-tags span {
-            color: #c4b5fd;
-            background: #171327;
-            border: 1px solid #35264e;
-            border-radius: 30px;
-            padding: 5px 12px;
-            font-size: 12px;
-        }
-
-        /* PROFILE PHOTO */
-        .hero-visual {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 420px;
-        }
-
-        .portrait-frame {
-            width: min(100%, 320px);
-            aspect-ratio: 4 / 5;
-            padding: 7px;
-            border: 1px solid #8b5cf6;
-            border-radius: 160px 160px 25px 25px;
-            background: linear-gradient(145deg, #292044, #111522);
-            box-shadow: 0 20px 70px rgba(124, 58, 237, 0.2);
-        }
-
-        .profile-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 155px 155px 19px 19px;
-            background: #171c2c;
-        }
-
-        .floating-card {
-            position: absolute;
-            left: -10px;
-            bottom: 65px;
-            background: #171c2c;
-            border: 1px solid #343047;
-            border-radius: 12px;
-            padding: 13px 17px;
-        }
-
-        .floating-card strong {
-            font-size: 14px;
-        }
-
-        .floating-card p {
-            color: #a1a8bb;
-            font-size: 12px;
-        }
-
-        /* SECTIONS */
-        .section {
-            padding-top: 90px;
-            padding-bottom: 90px;
-        }
-
-        .section-alt {
-            padding-top: 90px;
-            padding-bottom: 90px;
-            background: #0d101b;
-            border-top: 1px solid #171a29;
-            border-bottom: 1px solid #171a29;
-        }
-
-        .section-heading {
-            margin-bottom: 35px;
-        }
-
-        .section-heading h2,
-        .goals-card h2,
-        .contact-card h2 {
-            font-size: clamp(30px, 4vw, 45px);
-            line-height: 1.25;
-            margin-bottom: 15px;
-        }
-
-        .section-description {
-            color: #a1a8bb;
-            max-width: 600px;
-        }
-
-        /* CARDS */
+        /* CARDS / GLASS EFFECT */
         .glass-card {
             background: linear-gradient(145deg, #151928, #10131f);
             border: 1px solid #282b3b;
             border-radius: 16px;
-            transition: 0.3s;
         }
 
-        .glass-card:hover {
-            transform: translateY(-4px);
-            border-color: #7654bb;
+        /* CONTACT PAGE STYLING */
+        .contact-hero-section {
+            padding: 60px 0 100px;
+        }
+
+        .contact-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 40px;
+        }
+
+        .contact-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 35px;
+            align-items: start;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .contact-info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-info-card {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
 
         .card-icon {
-            display: inline-block;
-            color: #c4b5fd;
+            font-size: 24px;
             background: #241b3a;
-            border-radius: 10px;
-            padding: 8px 12px;
-            font-size: 23px;
-            margin-bottom: 15px;
-        }
-
-        .card-label {
-            color: #a78bfa;
-            font-size: 11px;
-            letter-spacing: 1.5px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .glass-card h3 {
-            margin-bottom: 10px;
-        }
-
-        .glass-card p {
-            color: #a1a8bb;
-            font-size: 14px;
-        }
-
-        /* ABOUT */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.3fr 0.7fr;
-            gap: 22px;
-        }
-
-        .about-main {
-            padding: 30px;
-        }
-
-        .about-main p + p {
-            margin-top: 15px;
-        }
-
-        .about-side {
-            display: grid;
-            gap: 20px;
-        }
-
-        .info-card {
-            padding: 24px;
-        }
-
-        /* EDUCATION */
-        .education-card {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-            padding: 28px;
-        }
-
-        .education-icon {
-            color: #c4b5fd;
-            background: #241b3a;
+            padding: 12px;
             border-radius: 12px;
-            padding: 15px;
-            font-size: 25px;
         }
 
-        .education-badge {
-            margin-left: auto;
-            color: #c4b5fd;
-            background: #241b3a;
-            border-radius: 30px;
-            padding: 6px 12px;
-            font-size: 12px;
-            white-space: nowrap;
+        .contact-info-card h3 {
+            font-size: 1rem;
+            margin-bottom: 3px;
+            color: #fff;
         }
 
-        /* SKILLS */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+        .contact-info-card p {
+            color: #a1a8bb;
+            font-size: 0.9rem;
+        }
+
+        .contact-form-wrapper {
+            padding: 35px;
+        }
+
+        .modern-contact-form {
+            display: flex;
+            flex-direction: column;
             gap: 18px;
         }
 
-        .skill-card {
-            padding: 23px;
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
         }
 
-        .skill-tag {
-            display: inline-block;
-            color: #a78bfa;
-            font-size: 12px;
-            margin-top: 15px;
-        }
-
-        /* PROJECTS */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 22px;
-        }
-
-        .project-card {
-            overflow: hidden;
-        }
-
-        .project-number {
-            padding: 18px 23px 0;
-            color: #a1a8bb;
-            font-size: 11px;
-            letter-spacing: 2px;
-        }
-
-        .project-art {
-            display: grid;
-            place-items: center;
-            min-height: 160px;
-            margin-top: 15px;
-            font-size: 60px;
-            font-weight: bold;
+        .form-group label {
+            font-size: 0.9rem;
             color: #c4b5fd;
-            background: radial-gradient(circle, #30204c, #151326);
+            font-weight: bold;
         }
 
-        .project-body {
-            padding: 24px;
+        .form-group input,
+        .form-group textarea {
+            background: #0d101b;
+            border: 1px solid #282b3b;
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: inherit;
+            width: 100%;
         }
 
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 17px;
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8b5cf6;
         }
 
-        .project-link {
-            display: inline-block;
-            color: #a78bfa;
-            font-size: 13px;
-            margin-top: 20px;
+        .submit-btn {
+            width: 100%;
+            margin-top: 10px;
         }
 
-        /* INTERESTS */
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 22px;
-        }
-
-        .interest-card {
-            padding: 28px;
-        }
-
-        .interest-emoji {
-            display: block;
-            font-size: 32px;
-            margin-bottom: 17px;
-        }
-
-        /* GOALS */
-        .goals-card {
-            max-width: 750px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .goals-card p:not(.eyebrow) {
+        .messages-container {
             max-width: 650px;
-            margin: 20px auto;
-            color: #a1a8bb;
+            margin: 0 auto 25px;
         }
 
-        /* CONTACT */
-        .contact-card {
+        .alert {
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
             text-align: center;
-            padding: 60px 25px;
-            border: 1px solid #35264e;
-            border-radius: 22px;
-            background: radial-gradient(ellipse at top, #211737, #111522 70%);
         }
 
-        .contact-card p:not(.eyebrow) {
-            max-width: 550px;
-            margin: 20px auto;
-            color: #a1a8bb;
+        .alert-success {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34d399;
         }
 
-        .contact-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 14px;
+        .alert-error {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
         }
 
         /* FOOTER */
         .footer {
             padding: 30px 0 20px;
             border-top: 1px solid #25283a;
+            margin-top: 50px;
         }
 
         .footer-content {
@@ -484,88 +277,10 @@
             margin-top: 22px;
         }
 
-        /* MOBILE RESPONSIVENESS */
+        /* RESPONSIVE */
         @media (max-width: 900px) {
-            .hero {
-                gap: 25px;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .about-grid {
+            .contact-grid {
                 grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 650px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-                padding-top: 14px;
-                padding-bottom: 14px;
-            }
-
-            .nav-links {
-                display: flex;
-                gap: 16px;
-                width: 100%;
-                overflow-x: auto;
-                padding-bottom: 5px;
-            }
-
-            .nav-links a {
-                white-space: nowrap;
-                font-size: 12px;
-            }
-
-            .hero {
-                grid-template-columns: 1fr;
-                padding-top: 55px;
-            }
-
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            .hero-visual {
-                min-height: 390px;
-            }
-
-            .portrait-frame {
-                width: min(78%, 300px);
-            }
-
-            .floating-card {
-                left: 0;
-                bottom: 50px;
-            }
-
-            .section,
-            .section-alt {
-                padding-top: 65px;
-                padding-bottom: 65px;
-            }
-
-            .skills-grid,
-            .projects-grid,
-            .interests-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .education-card {
-                align-items: flex-start;
-                flex-wrap: wrap;
-            }
-
-            .education-badge {
-                margin-left: 0;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
             }
         }
     </style>
@@ -573,18 +288,7 @@
 
 <body>
     <header class="site-header">
-        <nav class="navbar container">
-            <img src="{% static 'core/images/Glossy ICC Monogram with Crown.png' %}"
-                 alt="My logo">
-
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact" class="nav-contact">Contact me ↗</a>
-            </div>
-        </nav>
+        {% include "partial/navbar.html" %}
     </header>
 
     <main>
@@ -603,4 +307,3 @@
     </footer>
 </body>
 </html>
-
