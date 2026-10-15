@@ -7,6 +7,201 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>{% block title %}Ishami Cyusa Clairon | Portfolio{% endblock %}</title>
+    <link rel="icon" type="image/png"
+      href="{% static 'core/images/Regal ICC Crown and Book Emblem.png' %}?v=7">
+    .form-help,
+        .privacy-note {
+            margin-top: .45rem;
+            font-size: .82rem;
+        }
+
+        .contact-form button {
+            width: 100%;
+        }
+
+        .privacy-note {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* FORM FEEDBACK */
+
+        .notice {
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--surface-color);
+        }
+
+        .notice.success {
+            color: var(--success-color);
+            border-color: rgba(74, 222, 128, .45);
+        }
+
+        .notice.error {
+            color: var(--danger-color);
+            border-color: rgba(248, 113, 113, .45);
+        }
+
+        .notice ul {
+            padding-left: 1.2rem;
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: auto;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            background: rgba(17, 24, 39, .7);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: .88rem;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+        }
+
+        /* ACCESSIBILITY */
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible,
+        select:focus-visible {
+            outline: 2px solid #c4b5fd;
+            outline-offset: 3px;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 760px) {
+            main {
+                padding: 2.5rem 1rem 4rem;
+            }
+
+            .nav-container {
+                padding: .7rem 1rem;
+            }
+
+            .nav-brand img {
+                width: 62px;
+                height: 62px;
+                object-fit: contain;
+                display: block;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                mix-blend-mode: screen;
+            }
+
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .home-hero {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .hero-image-wrap {
+                width: min(80%, 300px);
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .about-intro,
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                margin-top: 3.5rem;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 500px) {
+            .nav-container {
+                flex-wrap: wrap;
+            }
+
+            .nav-brand img {
+                width: 48px;
+                height: 48px;
+            }
+
+            .nav-brand span {
+                font-size: .9rem;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+                gap: .5rem;
+            }
+
+            .nav-links a {
+                font-size: .82rem;
+            }
+
+            .card-grid,
+            .stats-grid,
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-field.full {
+                grid-column: auto;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-info,
+            .contact-form-card,
+            .about-panel {
+                padding: 1.3rem;
+            }
+        }
+
+            @media (prefers-reduced-motion: reduce) {
+                html {
+                    scroll-behavior: auto;
+                }
+
+                *,
+                *::before,
+                *::after {
+                    transition-duration: .01ms !important;
+                    animation-duration: .01ms !important;
+                }
+            }
+                        .site-logo {
+                    width: 100%;
+                    max-width: 180px;
+                    height: auto;
+                    display: block;
+                }
+
+                @media screen and (max-width: 480px) {
+                    .site-logo {
+                        max-width: 120px;
+                    }
+                }
+    </style>
+
+    {% block extra_head %}{% endblock %}
+
+
+</head>
     <meta name="description" content="Explore the portfolio of Ishami Cyusa Clairon, including projects, skills, clubs, and interests.">
     <meta name="theme-color" content="#18213a">
 
@@ -751,7 +946,7 @@
     </style>
 
     {% block extra_head %}{% endblock %}
-    {% load static %}
+
     <link rel="icon" type="image/png"
       href="{% static 'core/images/Regal ICC Crown and Book Emblem.png' %}?v=6">
 </head>
