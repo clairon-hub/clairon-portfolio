@@ -724,21 +724,34 @@
             }
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
+            @media (prefers-reduced-motion: reduce) {
+                html {
+                    scroll-behavior: auto;
+                }
 
-            *,
-            *::before,
-            *::after {
-                transition-duration: .01ms !important;
-                animation-duration: .01ms !important;
+                *,
+                *::before,
+                *::after {
+                    transition-duration: .01ms !important;
+                    animation-duration: .01ms !important;
+                }
             }
-        }
+                        .site-logo {
+                    width: 100%;
+                    max-width: 180px;
+                    height: auto;
+                    display: block;
+                }
+
+                @media screen and (max-width: 480px) {
+                    .site-logo {
+                        max-width: 120px;
+                    }
+                }
     </style>
 
     {% block extra_head %}{% endblock %}
+     <link rel="icon" href="{% static 'core/images/Regal ICC Crown and Book Emblem.png' %}">
 </head>
 
 <body>
